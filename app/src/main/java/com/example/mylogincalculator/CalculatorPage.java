@@ -1,6 +1,7 @@
 package com.example.mylogincalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import java.lang.*;
 
 import android.os.Bundle;
 import android.view.View;
@@ -29,8 +30,10 @@ public class CalculatorPage extends AppCompatActivity {
     Button btnDot;
     Button btnClear;
     EditText ed1;
+    Button btnLog;
+    Button btnEx;
     float Res1,Res2;
-    boolean Add,Sub,Mul,Div;
+    boolean Add,Sub,Mul,Div,Ex,Log;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,8 @@ public class CalculatorPage extends AppCompatActivity {
 
         btnClear = (Button) findViewById(R.id.btnClear);
         ed1 = (EditText) findViewById(R.id.editText);
+        btnLog = (Button) findViewById(R.id.btnLog);
+        btnEx = (Button) findViewById(R.id.btnEx);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +119,32 @@ public class CalculatorPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ed1.setText(ed1.getText()+".");
+            }
+        });
+
+        btnEx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ed1==null){
+                    ed1.setText("");
+                }else{
+                    Res1 =Float.parseFloat(ed1.getText()+ "");
+                    Ex = true;
+                    ed1.setText(null);
+                }
+            }
+        });
+
+        btnLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ed1==null){
+                    ed1.setText("");
+                }else{
+                    Res1 =Float.parseFloat(ed1.getText()+ "");
+                    Log = true;
+                    ed1.setText(null);
+                }
             }
         });
 
@@ -183,8 +214,24 @@ public class CalculatorPage extends AppCompatActivity {
                     Mul=false;
 
                 }if (Div==true){
-                    ed1.setText(Res1/Res2+"");
-                    Div=false;
+                    if (Res2 == 0){
+                       ed1.setText("ERROR cannot divide by zero");
+                    }else {
+                        ed1.setText(Res1 / Res2 + "");
+                        Div = false;
+                    }
+                }if (Ex==true){
+                    ed1.setText(Math.exp(Res1)+"");
+                    Ex=false;
+
+                }if (Log==true){
+                    if(Res1<=0){
+                        ed1.setText("ERROR Log cannot take negavite values or zero");
+                    }else{
+                        ed1.setText(Math.log(Res1)+"");
+                        Log=false;
+                    }
+
                 }
 
 
