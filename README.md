@@ -18,14 +18,21 @@ INSTRUCTIONS ON HOW TO RUN THE PROGRAM MANUALLY-
 2. Enter your credentials.
 3. Use the credentials to log into the application
 4. use the application.
-*5. Since this a basic calculator , to get a negative number initially, you must enter 0-"the number you want " and press and equals to |eg. -54 should be written as 0-54
+//5. Since this a basic calculator , to get a negative number initially, you must enter 0-"the number you want " and press and equals to |eg. -54 should be written as 0-54
 This bug would be fixed soon
-*6. Another bug using log and e^x is , the user needs to click the number, press log and again press another (random)number to produce to desired result | eg. to calculate log6, you need to write 6log2 and press enter | eg. to calculate e^7 you need to write 7e9 and press enter .
+//6. Another bug using log and e^x is , the user needs to click the number, press log and again press another (random)number to produce to desired result | eg. to calculate log6, you need to write 6log2 and press enter | eg. to calculate e^7 you need to write 7e9 and press enter .
 This bug will also be fixed soon
 
+ARCHITECTURE used-
+1. A GUI mobile app that lets the user logIn using his username and password and access the calculator.
+2. The file MainActivity.java is the main file that opens and is the home page where it asks you too enter details, remember the user or to sign up , if a new user.
+3. The file Registration.java is the second file used where if you click on new user, it leads to a new page where you can enter your details
+4. The file Credentials.java stores the new user information in the database and it can be accessed any time
+5. The file MyCalculator.java is the main file for calculating , the samew one used in assignment 3 , with some new featurees added like log and exponential.
 
 
 LISTS OF TESTS USED-
 1. Division by zero produces error
 2. If invalid credentials are entered 5 times, the application freezes
 3. Finding Log of a negative number produces error.
+4. New password entered must be atlest 8 characters long else it will not allow you to proceed.
